@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>CSS Retina Display - Hongkiat.com</title>
+
+<!--  jquery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../_nav/js/jquery.js"><\/script>')</script>
+
+<!-- demo scripts -->
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+.retina-media-query .retina-logo a,
+.retina-media-query .retina-logo span {
+	background-image: url('img/hongkiatcom.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+
+	content: 'hongkiatcom.png'; /* image name */
+}
+@media 	only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 192dpi) {
+	.demo-wrapper {
+		width: 80%;
+		font-size: .8em;
+	}
+	.retina-media-query .retina-logo a, 
+	.retina-media-query .retina-logo span {
+		width: 100%;
+		background-image: url('img/hongkiatcom.svg');
+		background-size: 100%;
+		background-repeat: no-repeat;
+
+		content: 'hongkiatcom.svg'; /* image name */
+	}
+}
+</style>
+
+<script>
+$(function() {
+	var dpr 	= window.devicePixelRatio;
+	// alert('Device Pixel Ratio: ' + dpr);
+	
+	if(dpr > 1) {
+		$('.screen-resolution').html('HD screen resolution.');
+	} else {
+		$('.screen-resolution').html('normal screen resolution.');
+	}
+
+    var span = $('<span></span>').hide().appendTo('.retina-logo'),
+    	imgName = span.css('content');
+    	
+    $('.retina-image-name').html(imgName);
+    span.remove();
+});
+</script>
+
+<!-- nav script -->
+<script src="../_nav/js/nav.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<!-- nav meta -->
+<div class="demo-meta">
+  <h1 class="demo-title">CSS Retina Display</h1>
+  <p class="demo-desc">This demo shows how to deliver graphics for HD screen through CSS</p>
+</div>
+
+<!-- demo content -->
+<div class="demo-wrapper css-retina-display">
+	<div class="retina-description">You are viewing this page in <span class="screen-resolution"></span></div>
+	<div class="retina-media-query">
+		<section class="retina-logo">
+			<h3>Using Media Query</h3>
+			<h1><a href="#" rel="external">Hongkiat.com</a></h1>
+			<div>Image being displayed <code class="retina-image-name">image.png</code></div>
+		</section>
+	</div>
+</div>
+
+</body>
+</html>
